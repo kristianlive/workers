@@ -19,7 +19,6 @@ public class Trainee extends Employee {
     }
 
     public String getValuesTrainee() {
-        System.out.println("FROM TRAINEE!!!!");
         return super.getValues() + ". End Date: " + endDate + ". Credentials: " + credentials;
     }
     public String getDetails() {

@@ -23,7 +23,6 @@ public class Worker extends Employee {
         return info;
     }
     public String getDetails() {
-        System.out.println("FROM Worker!!!!");
         return getValuesWorker();
     }
 
