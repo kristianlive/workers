@@ -3,10 +3,16 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Menu extends Employee {
+public class Menu {
     private ArrayList<Employee> employees;
 
-    public Menu (ArrayList<Employee>employees){
+    public Menu(ArrayList<Employee> employees) {
+
+        this.employees = employees;
+        startMenu();
+    }
+
+    public void startMenu() {
 
 
         Scanner scanner = new Scanner(System.in);
@@ -24,12 +30,12 @@ public class Menu extends Employee {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Showing all Employees(Total: "+employees.size() + ")" );
-                        for (Employee employee : employees){
-                            System.out.println(employee.getValuesAll());
-                        }
+                    System.out.println("Showing all Employees(Total: " + employees.size() + ")");
+                    for (Employee employee : employees) {
+                        System.out.println(employee.getDetails());
+                    }
 
-                    System.out.println("********************--------------*******************");
+                    System.out.println("----------------------------------------------------------");
                     break;
                 case 2:
                     System.out.println("Showing Salary Information:");
@@ -37,12 +43,14 @@ public class Menu extends Employee {
                     int averageSalaryWomen = Employee.calculateAverageSalaryForWomen(employees);
                     int averageSalaryMen = Employee.calculateAverageSalaryForMen(employees);
                     System.out.println("Average Salary for Women: " + averageSalaryWomen +
-                            "\nAverage Salary for Man: " + averageSalaryMen  );
+                            "\nAverage Salary for Man: " + averageSalaryMen);
 
-                    System.out.println("********************--------------*******************");
+                    System.out.println("----------------------------------------------------------");
                     break;
                 case 3:
-                    System.out.println("You chose Option 3");
+                    System.out.println("Show Earliest-Latest Worker");
+                    System.out.println("----------------------------------------------------------");
+
                     break;
                 case 4:
                     System.out.println("Exiting...");
@@ -54,5 +62,8 @@ public class Menu extends Employee {
         } while (choice != 4);
 
         scanner.close();
+
     }
 }
+
+

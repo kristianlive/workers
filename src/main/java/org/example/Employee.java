@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Employee {
 
+    public ArrayList<Employee> employees;
+
     public String name;
     public int id;
     public String gender;
@@ -12,21 +14,32 @@ public class Employee {
     public String endDate;
     public String credentials;
 
-    public Employee(String name, int id,String gender,int salary,String startDate){
-        System.out.println("Object Created");
-        setValuesWorker(name,id,gender,salary,startDate);
-        System.out.println(getValuesWorker());
+
+    public Employee(String name, int id, String gender) {
+        this.name = name;
+        this.id = id;
+        this.gender = gender;
     }
 
-    public Employee(String name, int id,String gender,String endDate,String credentials){
-        System.out.println("Object Created");
-        setValuesTrainee(name,id,gender,endDate,credentials);
-        System.out.println(getValuesAll());
+    public String getValues() {
+        return "Employee name: " + name + ". Id: " + id + ". Gender: " + gender;
     }
 
 
     public Employee(){
 
+    }
+
+    public void setValuesEmployee (String name, int id,String gender){
+        this.name = name;
+        this.id = id;
+        this.gender = gender;
+
+    }
+
+    public String getValuesEmployee(){
+        String info = "Employee name:"+name + ". Id:"+id+". Gender:"+gender;
+        return info;
     }
 
     public void setValuesWorker(String name, int id,String gender,int salary,String startDate){
@@ -35,11 +48,6 @@ public class Employee {
         this.gender = gender;
         this.salary = salary;
         this.startDate = startDate;
-    }
-
-    public String getValuesWorker(){
-        String info = "Employee name:"+name + ". Id:"+id+". Gender:"+gender +". Salary:" + salary+". Start Date:"+ startDate;
-        return info;
     }
 
     public void setValuesTrainee(String name, int id,String gender,String endDate,String credentials){
@@ -54,29 +62,6 @@ public class Employee {
     public int getSalary(){
         String info = "Salary Info: " + salary;
         return salary;
-    }
-
-    public String getValuesAll() {
-
-        StringBuilder info = new StringBuilder("Employee name: " + name + ". Id:" + id + ". Gender:" + gender);
-
-        if (salary != 0) {
-            info.append(". Salary:" + salary);
-        }
-
-        if (startDate != null) {
-            info.append(". Start Date:" + startDate);
-        }
-
-        if (endDate != null) {
-            info.append(". End Date:" + endDate);
-        }
-
-        if (credentials != null) {
-            info.append(". Credentials: " + credentials);
-        }
-
-        return info.toString();
     }
 
     public static int calculateAverageSalaryForWomen (ArrayList <Employee> employees) {
@@ -118,7 +103,11 @@ public class Employee {
         }
 
 
+
         }
+    public String getDetails() {
+        return getValues();
+    }
 
 
     }
