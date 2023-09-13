@@ -8,11 +8,11 @@ public class Worker extends Employee {
     public ArrayList<Worker> workers;
 
     public int salary;
-    public String startDate;
+    public LocalDate startDate;
 
 
 
-    public Worker(String name, int id,String gender,int salary,String startDate){
+    public Worker(String name, int id,String gender,int salary,LocalDate startDate){
         super(name, id, gender);
         this.salary = salary;
         this.startDate = startDate;
@@ -30,4 +30,9 @@ public class Worker extends Employee {
     public int getSalary() {
         return salary;
     }
+
+    public LocalDate getStartDate() {
+        return startDate; // or some default value if desired
+    }
+
 }

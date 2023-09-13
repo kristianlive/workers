@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Employee {
@@ -10,7 +11,7 @@ public class Employee {
     public int id;
     public String gender;
     public int salary;
-    public String startDate;
+    public LocalDate startDate;
     public String endDate;
     public String credentials;
 
@@ -42,7 +43,13 @@ public class Employee {
         return info;
     }
 
-    public void setValuesWorker(String name, int id,String gender,int salary,String startDate){
+    // In Employee class
+    public LocalDate getStartDate() {
+        return startDate; // or some default value if desired
+    }
+
+
+    public void setValuesWorker(String name, int id,String gender,int salary,LocalDate startDate){
         this.name = name;
         this.id = id;
         this.gender = gender;
