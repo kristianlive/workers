@@ -1,8 +1,9 @@
 package org.example;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.time.LocalDate;
-public class Worker extends Employee {
+public class Worker extends Employee implements Serializable {
 
 
     public ArrayList<Worker> workers;

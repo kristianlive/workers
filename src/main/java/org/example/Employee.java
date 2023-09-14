@@ -2,8 +2,9 @@ package org.example;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Employee {
+public class Employee implements Serializable {
 
     public ArrayList<Employee> employees;
 

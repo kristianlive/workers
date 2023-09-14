@@ -1,9 +1,10 @@
 package org.example;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Trainee extends Employee {
+public class Trainee extends Employee implements Serializable {
 
     public ArrayList<Trainee> trainees;
 
