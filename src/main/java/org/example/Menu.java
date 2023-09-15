@@ -30,7 +30,7 @@ public class Menu {
             System.out.println("2. Average Salary Information");
             System.out.println("3. Show Earliest-Latest Worker");
             System.out.println("4. Admin Panel");
-            System.out.println("5. Exit");
+            System.out.println("5. Save & Exit");
 
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
@@ -91,11 +91,10 @@ public class Menu {
                                 break;
                             case 2:
                                 System.out.println("Remove Employee:");
-                                // Here, you'd place code or call a method to remove an employee.
+                                removeEmployee();
                                 break;
                             case 3:
                                 System.out.println("Modify Employee Details:");
-                                // Here, you'd place code or call a method to modify employee details.
                                 break;
                             case 4:
                                 System.out.println("Returning to Main Menu...");
@@ -157,6 +156,26 @@ public class Menu {
 
         System.out.println(type + " added successfully!");
     }
+
+    public void removeEmployee() {
+        Scanner scanner = new Scanner(System.in);
+
+        for (Employee employee : employees) {
+            System.out.println("ID: " + employee.getId() + ", Name: " + employee.getName());
+        }
+
+        System.out.print("Enter the ID of the employee to remove: ");
+        int idToRemove = scanner.nextInt();
+
+        boolean removed = employees.removeIf(employee -> employee.getId() == idToRemove);
+
+        if (removed) {
+            System.out.println("Employee with ID " + idToRemove + " has been removed.");
+        } else {
+            System.out.println("No employee found with ID " + idToRemove);
+        }
+    }
+
 
 }
 

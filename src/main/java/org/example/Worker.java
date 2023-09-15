@@ -10,6 +10,7 @@ public class Worker extends Employee implements Serializable {
 
     public int salary;
     public LocalDate startDate;
+    private static final long serialVersionUID = 1L;
 
 
 

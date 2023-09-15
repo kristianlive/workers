@@ -15,6 +15,7 @@ public class Employee implements Serializable {
     public LocalDate startDate;
     public String endDate;
     public String credentials;
+    private static final long serialVersionUID = 1L;
 
 
     public Employee(String name, int id, String gender) {
@@ -68,9 +69,18 @@ public class Employee implements Serializable {
 
 
     public int getSalary(){
-        String info = "Salary Info: " + salary;
         return salary;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+
 
     public static int calculateAverageSalaryForWomen (ArrayList <Employee> employees) {
         int totalSalaryWomen = 0;

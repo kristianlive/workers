@@ -10,6 +10,7 @@ public class Trainee extends Employee implements Serializable {
 
     public String endDate;
     public String credentials;
+    private static final long serialVersionUID = 1L;
 
 
 

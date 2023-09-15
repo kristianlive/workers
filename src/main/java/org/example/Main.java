@@ -11,7 +11,11 @@ public class Main {
 
         ArrayList<Employee> employees = EmployeeDataStorage.loadEmployees();
 
-        if (employees.isEmpty()){
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> { // Hjälper att spara data om man råkat glömma spara data
+            EmployeeDataStorage.saveEmployees(employees);
+        }));
+
+        if (employees.isEmpty()){ // Den läggs till bara om Local Storage är tom
 
             employees.add(new Worker("Kristian Shneltser", 1, "Male", 50000, LocalDate.of(2017,5,5)));
             employees.add(new Worker("Max Bayern", 2, "Male", 20000, LocalDate.of(2018,5,5)));
@@ -25,7 +29,6 @@ public class Main {
 
 
         Menu menu = new Menu(employees);
-
         EmployeeDataStorage.saveEmployees(employees);
 
 
