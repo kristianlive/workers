@@ -15,7 +15,7 @@ public class Main {
             EmployeeDataStorage.saveEmployees(employees);
         }));
 
-        if (employees.isEmpty()){ // Den läggs till bara om Local Storage är tom
+        if (employees.isEmpty()){ // Den läggs till bara om Local Storage är tom som DEFAULT värde
 
             employees.add(new Worker("Kristian Shneltser", 1, "Male", 50000, LocalDate.of(2017,5,5)));
             employees.add(new Worker("Max Bayern", 2, "Male", 20000, LocalDate.of(2018,5,5)));
@@ -26,11 +26,6 @@ public class Main {
             employees.add(new Worker("Boss",7,"Male",70000, LocalDate.of(2020,5,5)));
 
         }
-
-
         Menu menu = new Menu(employees);
-        EmployeeDataStorage.saveEmployees(employees);
-
-
     }
 }

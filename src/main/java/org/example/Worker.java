@@ -34,7 +34,7 @@ public class Worker extends Employee implements Serializable {
     }
 
     public LocalDate getStartDate() {
-        return startDate; // or some default value if desired
+        return startDate;
     }
 
 }
