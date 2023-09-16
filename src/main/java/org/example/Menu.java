@@ -25,14 +25,14 @@ public class Menu {
         int choice;
 
         do {
-            System.out.println("Menu:");
+            System.out.println("------------ Employee Management System ------------");
             System.out.println("1. Show All Employees");
             System.out.println("2. Average Salary Information");
             System.out.println("3. Show Earliest-Latest Worker");
             System.out.println("4. Admin Panel");
             System.out.println("5. Save & Exit");
 
-            System.out.print("Enter your choice: ");
+            System.out.print("Enter your choice(1-5): ");
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -95,6 +95,7 @@ public class Menu {
                                 break;
                             case 3:
                                 System.out.println("Modify Employee Details:");
+                                modifyEmployeeDetails();
                                 break;
                             case 4:
                                 System.out.println("Returning to Main Menu...");
@@ -143,7 +144,7 @@ public class Menu {
 
             employees.add(new Worker(name, id, gender, salary, startDate));
         } else if ("Trainee".equalsIgnoreCase(type)) {
-            System.out.print("Enter end date: ");
+            System.out.print("Enter end date (YYYY-MM-DD): ");
             String endDate = scanner.next();
 
             System.out.print("Enter credentials: ");
@@ -176,6 +177,81 @@ public class Menu {
         }
     }
 
+    public void modifyEmployeeDetails() {
+        Scanner scanner = new Scanner(System.in);
+
+        for (Employee employee : employees) {
+            System.out.println("ID: " + employee.getId() + ", Name: " + employee.getName());
+        }
+
+        System.out.print("Enter the ID of the employee you want to modify: ");
+        int idToModify = scanner.nextInt();
+        Employee foundEmployee = null;
+
+        for (Employee employee : employees) {
+            if (employee.getId() == idToModify) {
+                foundEmployee = employee;
+                break;
+            }
+        }
+
+        if (foundEmployee != null) {
+            System.out.println("Which details would you like to modify for " + foundEmployee.getName() + "?");
+            System.out.println("1. Name");
+            System.out.println("2. Gender");
+            if (foundEmployee instanceof Worker) {
+                System.out.println("3. Salary");
+                System.out.println("4. Start Date (YYYY-MM-DD)");
+            } else if (foundEmployee instanceof Trainee) {
+                System.out.println("3. End Date (YYYY-MM-DD)");
+                System.out.println("4. Credentials");
+            }
+            int detailChoice = scanner.nextInt();
+
+            switch (detailChoice) {
+                case 1:
+                    System.out.print("Enter new name: ");
+                    String newName = scanner.next();
+                    foundEmployee.name = newName;
+                    break;
+                case 2:
+                    System.out.print("Enter new gender: ");
+                    String newGender = scanner.next();
+                    foundEmployee.gender = newGender;
+                    break;
+                case 3:
+                    if (foundEmployee instanceof Worker) {
+                        System.out.print("Enter new salary: ");
+                        int newSalary = scanner.nextInt();
+                        ((Worker) foundEmployee).salary = newSalary;
+                    } else if (foundEmployee instanceof Trainee) {
+                        System.out.print("Enter new end date: ");
+                        String newEndDate = scanner.next();
+                        ((Trainee) foundEmployee).endDate = newEndDate;
+                    }
+                    break;
+                case 4:
+                    if (foundEmployee instanceof Worker) {
+                        System.out.print("Enter new start date (YYYY-MM-DD): ");
+                        LocalDate newStartDate = LocalDate.parse(scanner.next());
+                        ((Worker) foundEmployee).startDate = newStartDate;
+                    } else if (foundEmployee instanceof Trainee) {
+                        System.out.print("Enter new credentials: ");
+                        String newCredentials = scanner.next();
+                        ((Trainee) foundEmployee).credentials = newCredentials;
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid choice. No changes made.");
+                    break;
+            }
+
+            System.out.println("Details updated successfully!");
+
+        } else {
+            System.out.println("No employee found with ID " + idToModify);
+        }
+    }
 
 }
 
